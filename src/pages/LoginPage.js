@@ -17,9 +17,9 @@ const LoginPage = () => {
       setError('Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.');
     }
   };
-
+  
   return (
-    <div className="min-h-screen flex items-center justify-center dark:bg-gray-800">
+    <div className="mt-24 flex items-center justify-center dark:bg-gray-800">
       <div className="login-container bg-white p-8 shadow-md rounded-md w-96 dark:bg-gray-700 bg-gray-100 dark:text-white text-black">
         <h2 className="text-2xl font-semibold mb-4 dark:text-white text-gray-800">Iniciar sesión</h2>
 

@@ -1194,6 +1194,10 @@ input[type="range"]::-ms-fill-lower {
   margin-top: 4rem;
 }
 
+.mt-24 {
+  margin-top: 6rem;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -1406,10 +1410,6 @@ input[type="range"]::-ms-fill-lower {
 
 .max-h-64 {
   max-height: 16rem;
-}
-
-.min-h-screen {
-  min-height: 100vh;
 }
 
 .min-h-unit-8 {
