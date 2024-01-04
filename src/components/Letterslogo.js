@@ -1,12 +1,12 @@
-import {useContext} from  'react';
-import {ThemeContext} from './ThemeContext'
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import {ThemeContext} from './ThemeContext'
 
 
 function Logo(props) {
     const navigate = useNavigate();
 
-  const { theme } = useContext(ThemeContext);
+    const { theme } = useContext(ThemeContext);
 
   const handleSmallButtonClick = () => {
     // Redirige a la ruta deseada cuando se hace clic en el botón "Small"
@@ -23,10 +23,10 @@ function Logo(props) {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       x="0px"
       y="0px"
-      viewBox="0 0 300 149.8"
-      style={{ enableBackground: 'new 0 0 300 149.8' }}
+      viewBox="0 0 57.4 16.1"
+      style={{ enableBackground: 'new 0 0 57.4 16.1' }}
       xmlSpace="preserve"
-      className={`h-8 w-auto`}
+      className={`h-6 w-auto`}
     >
       <style type="text/css"> 
         {theme === 'dark'
@@ -44,11 +44,11 @@ function Logo(props) {
         <path className="st0" d="M133.2,27c-5,0-7.3-3.2-7.3-7.9s2.5-8.2,7.4-8.2c3.1,0,6.1,1.4,6.2,4.9H136c-0.2-1.5-1.2-2.4-2.7-2.4
 		c-3,0-3.9,3.3-3.9,5.7c0,2.5,0.9,5.3,3.8,5.3c1.5,0,2.6-0.8,2.9-2.4h3.5C139.2,25.7,136.4,27,133.2,27z" />
         <g> */}
-     <rect class="st1" x="74.9" width="149.8" height="149.8"/>
-<polygon class="st2" points="225.1 149.8 300 74.9 225.1 0 225.1 0 225.1 149.8"/>
-<polygon class="st2" points="74.9 149.8 0 74.9 74.9 0 74.9 0 74.9 149.8"/>
-<polygon class="st2" points="225.1 0 149.8 74.9 74.9 0 74.9 0 225.1 0"/>
-<polygon class="st2" points="74.9 149.8 149.8 74.9 225.1 149.8 225.1 149.8 74.9 149.8"/> </g>
+      <path class="st0" d="M10.1,9.2H3.4v6.6H0V.3H3.4V6.6h6.7V.3h3.4V15.8H10.1Z"/>
+      <path class="st0" d="M21.6,16.1c-3.3,0-6.1-1.3-6.2-5h3.4c0,1.7,1,2.6,2.9,2.6,1.4,0,2.9-.7,2.9-2.2,0-1.2-1.1-1.6-2.8-2.1l-1.1-.3c-2.4-.7-4.9-1.7-4.9-4.4C15.8,1.2,19,.1,22,.1s5.6,1.1,5.6,4.5H24.2a2.19,2.19,0,0,0-2.5-2.2,2.27,2.27,0,0,0-2.5,2c0,1.1,1,1.5,3.2,2.2l1.3.4c2.7.8,4.3,1.8,4.3,4.3C28,14.8,24.6,16.1,21.6,16.1Z"/>
+      <path class="st0" d="M29.9.3h5.4a10.3,10.3,0,0,1,3,.2,3.77,3.77,0,0,1,3.3,3.7c0,2-1.3,3-3.1,3.5,2.1.4,3.6,1.5,3.6,3.8,0,3.5-3.5,4.3-6.2,4.3H29.8L29.9.3Zm5.4,6.5c1.5,0,3-.3,3-2.1,0-1.6-1.4-2-2.8-2H33.1V6.8Zm.4,6.7c1.6,0,3.1-.4,3.1-2.3s-1.3-2.3-2.9-2.3H33.2v4.5l2.5.1Z"/>
+      <path class="st0" d="M51,16.1c-5,0-7.3-3.2-7.3-7.9S46.2,0,51.1,0c3.1,0,6.1,1.4,6.2,4.9H53.8a2.56,2.56,0,0,0-2.7-2.4c-3,0-3.9,3.3-3.9,5.7s.9,5.3,3.8,5.3a2.74,2.74,0,0,0,2.9-2.4h3.5C57,14.8,54.2,16.1,51,16.1Z"/>
+ </g>
       {/* </g> */}
     </svg>
 </a>

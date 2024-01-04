@@ -7,6 +7,7 @@ import { SiFuturelearn } from 'react-icons/si'
 import { SiOpenaccess } from 'react-icons/si'
 import { CgProfile } from 'react-icons/cg'
 import Logo from './Logo'
+import Letterslogo from './Letterslogo'
 import HamburgerButton from './HamburgerMenuButton/HamburgerButton'
 
 const Sidebar = () => {
@@ -35,12 +36,13 @@ const Sidebar = () => {
           onClick={() => setOpen(!open)}
         />
         <Link to='/'>
-          <div className={`flex ${open && 'gap-x-4'} items-center`}>
+          <div className={`flex ${open && 'gap-x-4'} items-center transition-transform transform hover:scale-110`}>
             <Logo className='pl-2' />
             {open && (
-              <span className='text-xl font-medium whitespace-nowrap dark:text-white'>
+              /* <span className='text-xl font-medium whitespace-nowrap dark:text-white'>
                 Goal Quest
-              </span>
+              </span> */
+              <Letterslogo/>
             )}
           </div>
         </Link>
