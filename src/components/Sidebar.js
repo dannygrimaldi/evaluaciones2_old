@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import AuthContext  from '../context/AuthContext';
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { BsArrowLeftCircle } from 'react-icons/bs'
@@ -18,8 +18,30 @@ const Sidebar = () => {
   const location = useLocation();
   const navigate = useNavigate()
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { user, logoutUser } = useContext(AuthContext);
+  const { user, logoutUser, authTokens} = useContext(AuthContext);
 
+    let [profile, setProfile] = useState([])
+
+    useEffect(() => {
+        getProfile()
+    },[])
+
+    const getProfile = async() => {
+        let response = await fetch('/profile', {
+        method: 'GET',
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization':'Bearer ' + String(authTokens.access)
+        }
+        })
+        let data = await response.json()
+        console.log(data)
+        if(response.status === 200){
+            setProfile(data)
+        } else if(response.statusText === 'Unauthorized'){
+            logoutUser()
+        }
+    }
   const redirectToLogin = () => {
     navigate('/login');
   };
@@ -34,11 +56,11 @@ const Sidebar = () => {
   return (
     <>
     <h1> {user ? user.username : ''}</h1>
-      {user ? (
-        <button onClick={logoutUser}>Cerrar sesión</button>
-      ) : (
-        <button onClick={redirectToLogin}>Iniciar sesión</button>
-      )}
+    <h1>{user ? profile.first_name: ''}</h1>
+    <h1>{user ? profile.last_name: ''}</h1>
+    <h1>{user ? profile.nivel: ''}</h1>
+
+
 
       <div
         className={`${
