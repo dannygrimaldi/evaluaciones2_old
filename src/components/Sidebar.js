@@ -9,6 +9,7 @@ import { CgProfile } from 'react-icons/cg'
 import Logo from './Logo'
 import Letterslogo from './Letterslogo'
 import HamburgerButton from './HamburgerMenuButton/HamburgerButton'
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 
 
 const Sidebar = () => {
@@ -16,10 +17,8 @@ const Sidebar = () => {
   const [mobileMenu, setMobileMenu] = useState(false)
   const location = useLocation();
   const navigate = useNavigate()
-
-
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { user, logoutUser } = useContext(AuthContext);
-
 
   const redirectToLogin = () => {
     navigate('/login');
@@ -34,7 +33,6 @@ const Sidebar = () => {
   ]
   return (
     <>
-
     <h1> {user ? user.username : ''}</h1>
       {user ? (
         <button onClick={logoutUser}>Cerrar sesión</button>
@@ -77,7 +75,8 @@ const Sidebar = () => {
                 }`}
                 onClick={() => {
                   if (menu.title === 'Cerrar sesión') {
-                    logoutUser();
+                    /* logoutUser(); */
+                    onOpen();
                   }
                 }}
               >
@@ -115,18 +114,18 @@ const Sidebar = () => {
               key={index}
               onClick={() => setMobileMenu(false)}
               
-            >
+            > 
               <span
                 className={` ${
                   location.pathname === menu.path &&
                   'bg-gray-200 dark:bg-gray-700'
                 } p-2 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700`}
-
                 onClick={() => {
                   if (menu.title === 'Cerrar sesión') {
-                    logoutUser();
+                    onOpen();
                   }
                 }}
+                
               >
                 {menu.title}
               </span>
@@ -134,6 +133,30 @@ const Sidebar = () => {
           ))}
         </div>
       </div>
+
+      <Modal isOpen={isOpen} onOpenChange={onClose}>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">¿Realmente deseas cerrar sesión?</ModalHeader>
+              <ModalBody>
+                <p>Al cerrar sesión, se te redirigirá a la página de inicio de sesión.</p>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onPress={onClose}>
+                  Cancelar
+                </Button>
+                <Button color="primary" onPress={() => {
+                  logoutUser();
+                  onClose();
+                }}>
+                  Cerrar sesión
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </>
   )
 }
