@@ -1,29 +1,47 @@
-import React, { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-
+import React, { useState, useContext } from 'react'
+import AuthContext  from '../context/AuthContext';
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { BsArrowLeftCircle } from 'react-icons/bs'
 import { AiFillPieChart } from 'react-icons/ai'
 import { SiFuturelearn } from 'react-icons/si'
-import { SiOpenaccess } from 'react-icons/si'
+import { IoIosLogIn , IoIosLogOut} from "react-icons/io";
 import { CgProfile } from 'react-icons/cg'
 import Logo from './Logo'
 import Letterslogo from './Letterslogo'
 import HamburgerButton from './HamburgerMenuButton/HamburgerButton'
 
+
 const Sidebar = () => {
   const [open, setOpen] = useState(true)
   const [mobileMenu, setMobileMenu] = useState(false)
-  const location = useLocation()
+  const location = useLocation();
+  const navigate = useNavigate()
 
+
+  const { user, logoutUser } = useContext(AuthContext);
+
+
+  const redirectToLogin = () => {
+    navigate('/login');
+  };
+  
   const Menus = [
     { title: 'Dashboard', path: '/dashboard', src: <AiFillPieChart /> },
     { title: 'Course', path: '/course', src: <SiFuturelearn /> },
     { title: 'Profile', path: '/profile', src: <CgProfile /> },
-    { title: 'Signin', path: '/login', src: <SiOpenaccess />, gap: 'true' },
-  ]
+    { title: user ? 'Cerrar sesión' : 'Iniciar sesión', path: '/login', src: user ? <IoIosLogOut  /> : <IoIosLogIn /> , gap: 'true' },
 
+  ]
   return (
     <>
+
+    <h1> {user ? user.username : ''}</h1>
+      {user ? (
+        <button onClick={logoutUser}>Cerrar sesión</button>
+      ) : (
+        <button onClick={redirectToLogin}>Iniciar sesión</button>
+      )}
+
       <div
         className={`${
           open ? 'w-60' : 'w-fit'
@@ -48,6 +66,7 @@ const Sidebar = () => {
         </Link>
 
         <ul className='pt-6'>
+          
           {Menus.map((menu, index) => (
             <Link to={menu.path} key={index}>
               <li
@@ -56,6 +75,11 @@ const Sidebar = () => {
                   location.pathname === menu.path &&
                   'bg-gray-200 dark:bg-gray-700'
                 }`}
+                onClick={() => {
+                  if (menu.title === 'Cerrar sesión') {
+                    logoutUser();
+                  }
+                }}
               >
                 <span className='text-2xl'>{menu.src}</span>
                 <span
@@ -64,7 +88,9 @@ const Sidebar = () => {
                   } origin-left duration-300 hover:block`}
                 >
                   {menu.title}
+                  
                 </span>
+                
               </li>
             </Link>
           ))}
@@ -88,12 +114,19 @@ const Sidebar = () => {
               to={menu.path}
               key={index}
               onClick={() => setMobileMenu(false)}
+              
             >
               <span
                 className={` ${
                   location.pathname === menu.path &&
                   'bg-gray-200 dark:bg-gray-700'
                 } p-2 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700`}
+
+                onClick={() => {
+                  if (menu.title === 'Cerrar sesión') {
+                    logoutUser();
+                  }
+                }}
               >
                 {menu.title}
               </span>
@@ -104,5 +137,4 @@ const Sidebar = () => {
     </>
   )
 }
-
 export default Sidebar
