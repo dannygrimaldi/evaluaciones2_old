@@ -73,7 +73,7 @@ const Sidebar = () => {
                   location.pathname === menu.path &&
                   'bg-gray-200 dark:bg-gray-700'
                 }`}
-                onClick={() => {
+                onClick={(e) => {
                   if (menu.title === 'Cerrar sesión') {
                     /* logoutUser(); */
                     e.preventDefault();
@@ -121,7 +121,7 @@ const Sidebar = () => {
                   location.pathname === menu.path &&
                   'bg-gray-200 dark:bg-gray-700'
                 } p-2 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700`}
-                onClick={() => {
+                onClick={(e) => {
                   if (menu.title === 'Cerrar sesión') {
                     e.preventDefault();
                     onOpen();
