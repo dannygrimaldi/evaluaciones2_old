@@ -28,7 +28,7 @@ const Sidebar = () => {
     { title: 'Dashboard', path: '/dashboard', src: <AiFillPieChart /> },
     { title: 'Course', path: '/course', src: <SiFuturelearn /> },
     { title: 'Profile', path: '/profile', src: <CgProfile /> },
-    { title: user ? 'Cerrar sesión' : 'Iniciar sesión', path: '/login', src: user ? <IoIosLogOut  /> : <IoIosLogIn /> , gap: 'true' },
+    { title: user ? 'Cerrar sesión' : 'Iniciar sesión', path: user ? '':'/login', src: user ? <IoIosLogOut  /> : <IoIosLogIn /> , gap: 'true' },
 
   ]
   return (
